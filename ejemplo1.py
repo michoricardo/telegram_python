@@ -36,11 +36,11 @@ def coahuila(update: Update, context: CallbackContext) -> None:
 
 def help_command(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Deja te ayudo carnal(a)')
+    update.message.reply_text('Mira, así está la cosa: ')
     update.message.reply_text('Puedes mandar: /hola para que te salude')
     update.message.reply_text('/coahuila para mandarte algo muy coahuilense')
-    update.message.reply_text('/test_apiconnection para hacer health check del API httpbin')
-    update.message.reply_text('/chuck_norris para obtener un chiste random de chuck norris')
+    update.message.reply_text('/api para hacer health check del API httpbin')
+    update.message.reply_text('/chuck para obtener un chiste random de chuck norris')
     update.message.reply_text('/patito para obtener un patito random')
 
 
