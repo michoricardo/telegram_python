@@ -68,6 +68,9 @@ def echo(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(update.message.text)
 
 def geolocate(user_input):
+    update.message.reply_text('Por favor escribe una ip a geolocalizar ')
+    user_input = update.message.text
+    #https://www.telize.com/geoip/46.19.37.108
     answer = "me dijistes :  " + user_input
     return answer
     r = requests.get('https://api.chucknorris.io/jokes/random')
@@ -77,9 +80,7 @@ def geolocate(user_input):
     update.message.reply_text(chiste['value'])
 
 def ip_check(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('Por favor escribe una ip a geolocalizar ')
-    user_input = update.message.text
-    update.message.reply_text(geolocate(user_input))
+    update.message.reply_text(geolocate())
 
 
 def main() -> None:
