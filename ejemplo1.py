@@ -3,7 +3,7 @@ import logging,requests
 from requests import status_codes
 from telegram import Update, ForceReply
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
-
+from telegram.ext import CommandHandler,ContextTypes,MessageHandler,filters
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -67,21 +67,6 @@ def echo(update: Update, context: CallbackContext) -> None:
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
-def geolocate(user_input):
-    update.message.reply_text('Por favor escribe una ip a geolocalizar ')
-    user_input = update.message.text
-    #https://www.telize.com/geoip/46.19.37.108
-    answer = "me dijistes :  " + user_input
-    return answer
-    r = requests.get('https://api.chucknorris.io/jokes/random')
-    chiste=r.json()
-    print(chiste['value'])
-    update.message.reply_text('Un chistin del chuck norris en inglés: ')
-    update.message.reply_text(chiste['value'])
-
-def ip_check(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(geolocate())
-
 
 def main() -> None:
     """Start the bot."""
@@ -98,7 +83,7 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("api", test_apiconnection))
     dispatcher.add_handler(CommandHandler("chuck", chuck_norris))
     dispatcher.add_handler(CommandHandler("patito", patito))
-    dispatcher.add_handler(CommandHandler("geolocate", ip_check))
+    dispatcher.add_handler(CommandHandler("morro", morro))
 
     # on non command i.e message - echo the message on Telegram
     dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
