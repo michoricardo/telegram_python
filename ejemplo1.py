@@ -67,6 +67,20 @@ def echo(update: Update, context: CallbackContext) -> None:
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
+def geolocate(user_input):
+    answer = "me dijistes :  " + user_input
+    return answer
+    r = requests.get('https://api.chucknorris.io/jokes/random')
+    chiste=r.json()
+    print(chiste['value'])
+    update.message.reply_text('Un chistin del chuck norris en inglés: ')
+    update.message.reply_text(chiste['value'])
+
+def ip_check(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text('Por favor escribe una ip a geolocalizar ')
+    user_input = update.message.text
+    update.message.reply_text(geolocate(user_input))
+
 
 def main() -> None:
     """Start the bot."""

@@ -1,0 +1,10 @@
+https://medium.com/tech-insights/how-to-deploy-a-python-script-or-bot-to-heroku-in-5-minutes-a82de2d3ed40
+https://devcenter.heroku.com/articles/heroku-cli
+
+heroku login
+heroku git:remote -a NAME_OF_YOUR_HEROKU_APP
+git add .
+git commit -m "Deployment commit"
+git push heroku master 
+heroku ps:scale worker=1
+
