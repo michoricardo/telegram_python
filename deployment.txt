@@ -6,3 +6,4 @@ git commit -m "Deployment commit"
 git push heroku master 
 heroku ps:scale worker=1
 
+se tiene un remote origin y un remote heroku, para deployear al heroku es el git push heroku master y para deployear a github es git push origin master
