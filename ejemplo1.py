@@ -1,7 +1,6 @@
-
-import logging,requests
+import logging,requests,os,dotenv
 from requests import status_codes
-from telegram import Update, ForceReply
+from telegram import Update, ForceReply,Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, CommandHandler,ContextTypes,MessageHandler,filters
 # Enable logging
 logging.basicConfig(
@@ -11,12 +10,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-#docu de los replies https://core.telegram.org/bots/update56kabdkb12ibuisabdubodbasbdaosd#:~:text=Formatting%20options,-The%20Bot%20API&text=You%20can%20use%20bold%2C%20italic,style%20or%20HTML%2Dstyle%20formatting.
 def hola(update: Update, context: CallbackContext) -> None:
-    """Send a message when the command /start is issued."""
     user = update.effective_user
     update.message.reply_markdown_v2(
-        fr'Hellooooo {user.mention_markdown_v2()}\!',
+        fr'Hola hola {user.mention_markdown_v2()}\!',
         reply_markup=ForceReply(selective=True),
     )
     
@@ -68,9 +65,10 @@ def echo(update: Update, context: CallbackContext) -> None:
 
 
 def main() -> None:
-    """Start the bot."""
+    dotenv.load_dotenv()
+    mybot_token=os.getenv("BOT_TOKEN")
     # Create the Updater and pass it your bot's token.
-    updater = Updater("5681615186:AAHgK6j8FPYes1omN39UmCkMiK85VKcBc1Y")
+    updater = Updater(mybot_token)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher

@@ -1,0 +1,3 @@
+https://core.telegram.org/bots/update56kabdkb12ibuisabdubodbasbdaosd#:~:text=Formatting%20options,-The%20Bot%20API&text=You%20can%20use%20bold%2C%20italic,style%20or%20HTML%2Dstyle%20formatting.
+https://medium.com/tech-insights/how-to-deploy-a-python-script-or-bot-to-heroku-in-5-minutes-a82de2d3ed40
+https://devcenter.heroku.com/articles/heroku-cli 
