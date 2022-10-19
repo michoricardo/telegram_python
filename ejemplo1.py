@@ -97,6 +97,7 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("api", test_apiconnection))
     dispatcher.add_handler(CommandHandler("chuck", chuck_norris))
     dispatcher.add_handler(CommandHandler("patito", patito))
+    dispatcher.add_handler(CommandHandler("geolocate", ip_check))
 
     # on non command i.e message - echo the message on Telegram
     dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
