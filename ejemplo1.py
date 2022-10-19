@@ -2,8 +2,7 @@
 import logging,requests
 from requests import status_codes
 from telegram import Update, ForceReply
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
-from telegram.ext import CommandHandler,ContextTypes,MessageHandler,filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, CommandHandler,ContextTypes,MessageHandler,filters
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -83,7 +82,6 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("api", test_apiconnection))
     dispatcher.add_handler(CommandHandler("chuck", chuck_norris))
     dispatcher.add_handler(CommandHandler("patito", patito))
-    dispatcher.add_handler(CommandHandler("morro", morro))
 
     # on non command i.e message - echo the message on Telegram
     dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
