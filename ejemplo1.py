@@ -64,11 +64,11 @@ def echo(update: Update, context: CallbackContext) -> None:
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
-def ip_menu(update: Update, context: CallbackContext,dispatcher) -> None:
+def ip_menu(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Entraste al menú de la ip ')
-    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, ip_mensaje))
+    #dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, ip_mensaje))
 
-def ip_mensaje(update: Update, context: CallbackContext,dispatcher) -> None:
+def ip_mensaje(update: Update, context: CallbackContext) -> None:
     ip_usuario=update.message.text
     update.message.reply_text('Enviaste la ip: ' + ip_usuario)
 
