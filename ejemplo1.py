@@ -4,6 +4,7 @@ Dispatcher is a class whose responsibility it is to do something with the update
 CallbackContext is a convenience class used in the PTB framework to provide access to commonly used objects into your handler callbacks. For each update one instance of this class is built by the Dispatcher and passed to the handler callbacks as second argument.
 '''
 
+from ast import Call
 import logging,requests,os,dotenv
 from requests import status_codes
 from telegram import Update, ForceReply,Bot
@@ -61,16 +62,26 @@ def patito(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(img['url'])
 
 def echo(update: Update, context: CallbackContext) -> None:
+    user_message = update.message.text
     """Echo the user message."""
-    update.message.reply_text(update.message.text)
+    
+    if "IP:" in user_message:
+        update.message.reply_text("Enviando " + user_message + " a función manejadora")
+        ip_mensaje(user_message,update,context)
+    else:
+        update.message.reply_text(user_message)
+
 
 def ip_menu(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('Entraste al menú de la ip ')
-    #dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, ip_mensaje))
+    update.message.reply_text('Por favor escribe una ip en el siguiente formato: IP:10.10.10.10')
 
-def ip_mensaje(update: Update, context: CallbackContext) -> None:
-    ip_usuario=update.message.text
-    update.message.reply_text('Enviaste la ip: ' + ip_usuario)
+def ip_mensaje(user_message,update: Update, context: CallbackContext) -> None:
+    stripped_ip = user_message.strip("IP: ")
+    update.message.reply_text('Información de la ip en formato JSON')
+    request_geolocator='http://ipapi.co/'+stripped_ip+'/json'
+    r = requests.get(request_geolocator)
+    response=r.json()
+    update.message.reply_text(response)
 
 def main() -> None:
     dotenv.load_dotenv()
