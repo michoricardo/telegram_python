@@ -1,0 +1,7 @@
+help - para darte ayuda
+hola - para saludarte
+ip - para geolocalizar una ip
+coahuila - para mandarte una sorpresa coahuilense
+chuck - para enviarte un chiste de Chuck Norris random 
+patito - para enviarte un patito random 
+api - testeo de api para conexión
